@@ -4,7 +4,7 @@
             <div class="my-12">
                 <div class="my-4">
                     <p>
-                        <router-link to="/">Home</router-link> / Categorie
+                        <router-link class="text-gray-500" to="/">Home</router-link> / Categorie
                     </p>
                 </div>
                 <div class="bg-neonYellow inline-block h-6">

@@ -3,7 +3,7 @@
         <div v-if="post">
             <div class="w-11/12 mx-auto my-2 sm:mt-12">
                 <div class="text-sm">
-                    <router-link class="hover:border-black hover:border-b-2" to="/">Home</router-link> / Artikel
+                    <router-link class="text-gray-500" to="/">Home</router-link> / Artikel
                 </div>
                 <div class="mt-4">
                     <h1 class="text-2xl">{{ post.title.rendered }}</h1>
