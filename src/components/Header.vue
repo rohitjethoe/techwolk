@@ -35,7 +35,7 @@
             </div>
             <div v-if="results" class="w-11/12 mx-auto my-12 text-white">
                 <div class="my-6" v-for="result in results">
-                    <a href="" class="text-xl hover:text-neonYellow">✥ &nbsp;{{ result.title }}</a>
+                    <a :href="`/artikel/${result.url.replace('https://rohit.nl/wordpress/', '')}`" class="text-xl hover:text-neonYellow">✥ &nbsp;{{ result.title }}</a>
                 </div>
             </div>
         </div>

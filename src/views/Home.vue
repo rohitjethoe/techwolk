@@ -22,7 +22,9 @@
         </div>
 
         <div class="bg-black text-2xl font-semibold py-6 text-white text-center">
-            <i class="fa-brands fa-twitter mx-2"></i>
+            <a href="https://twitter.com/techwolk" target="_blank">
+                <i class="fa-brands fa-twitter mx-2"></i>
+            </a>
             <i class="fa-brands fa-ethereum mx-2"></i>
         </div>
 
