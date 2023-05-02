@@ -59,7 +59,7 @@
         </div>
         <div 
         :class="opened ? 'block' : 'hidden'"
-        class="fixed bg-[rgba(0,0,0,0.9)] w-screen h-screen top-0 left-0">
+        class="fixed bg-[rgba(0,0,0,0.9)] z-30 w-screen h-screen top-0 left-0">
             <div class="w-11/12 mx-auto mt-8 flex justify-between">
                 <input 
                 @input="searchWordpress"
