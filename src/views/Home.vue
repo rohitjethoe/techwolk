@@ -44,11 +44,13 @@
                     </h2>
                 </div>
                 <div class="my-8">
-                    <div v-for="post in posts.crypto.slice(0, 6)" class="w-full sm:w-2/3 md:w-1/3">
-                        <a :href="`/artikel/${post.slug}`">
-                            <img class="w-full h-full object-contain rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
-                        </a>
-                        <div class="my-2">
+                    <div v-for="post in posts.crypto.slice(0, 6)" class="flex items-center gap-3">
+                        <div class="w-32 h-24">
+                            <a :href="`/artikel/${post.slug}`">
+                                <img class="w-full h-full object-cover aspect-auto rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
+                            </a>
+                        </div>
+                        <div class="my-2 w-2/3 sm:w-96">
                             <a :href="`/artikel/${post.slug}`">
                                 <h2 class="font-semibold">
                                     {{ post.title.rendered }}
@@ -74,7 +76,7 @@
                     <div v-for="post in posts.ai.slice(0, 6)" class="flex items-center gap-3">
                         <div class="w-32 h-24">
                             <a :href="`/artikel/${post.slug}`">
-                                <img class="w-full h-full rounded object-cover aspect-auto rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
+                                <img class="w-full h-full object-cover aspect-auto rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
                             </a>
                         </div>
                         <div class="my-2 w-2/3 sm:w-96">
@@ -100,9 +102,11 @@
                 </div>
                 <div class="my-8">
                     <div v-for="post in posts.tech.slice(0, 6)" class="flex items-center gap-3">
-                        <a :href="`/artikel/${post.slug}`">
-                            <img class="w-32 h-24 object-cover aspect-auto rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
-                        </a>
+                        <div class="w-32 h-24">
+                            <a :href="`/artikel/${post.slug}`">
+                                <img class="w-full h-full object-cover aspect-auto rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
+                            </a>
+                        </div>
                         <div class="my-2 w-2/3 sm:w-96">
                             <a :href="`/artikel/${post.slug}`">
                                 <h2 class="font-semibold">
