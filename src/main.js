@@ -5,12 +5,14 @@ import './style.css'
 import App from './App.vue'
 import Home from '@/views/Home.vue'
 import Post from '@/views/Post.vue'
+import Category from '@/views/Category.vue'
 import Dashboard from '@/views/Dashboard.vue'
 
 const routes = [
     { path: '/', component: Home },
     { path: '/dashboard', component: Dashboard },
     { path: '/artikel/:id', component: Post },
+    { path: '/categorie/:id', component: Category },
     { path: '/:pathMatch(.*)*', redirect: '/' }
 ]
 
