@@ -18,6 +18,12 @@
             <div class="w-11/12 mx-auto mb-32">
                 <div class="post-content md:w-2/3" v-html="post.content.rendered"></div>
             </div>
+            <div class="bg-black text-2xl font-semibold py-6 mb-3 text-white text-center">
+                <a href="https://twitter.com/techwolk" target="_blank">
+                    <i class="fa-brands fa-twitter mx-2"></i>
+                </a>
+                <i class="fa-brands fa-ethereum mx-2"></i>
+            </div>
         </div>
     </Layout>
 </template>

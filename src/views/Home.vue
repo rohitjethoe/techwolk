@@ -1,12 +1,12 @@
 <template>
     <Layout>
-        <div class="w-11/12 mx-auto my-10">
+        <div class="w-11/12 mx-auto">
             <div class="md:w-2/3 lg:w-2/4">
                 <div class="py-10 mb-16" v-if="post">
                     <p class="text-gray-500 font-semibold py-2">
                         {{`${new Date(post.date).getDate()} ${months[new Date(post.date).getMonth()]} ${new Date(post.date).getFullYear()}`}}
                     </p>
-                    <h1 class="text-4xl font-semibold py-2">
+                    <h1 class="text-3xl sm:text-4xl font-semibold py-2">
                         <a :href="`/artikel/${post.slug}`">{{ post.title.rendered }}</a>
                     </h1>
                     <a :href="`/artikel/${post.slug}`">
