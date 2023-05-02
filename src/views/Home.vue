@@ -1,0 +1,201 @@
+<template>
+    <Layout>
+        <div class="w-11/12 mx-auto my-10">
+            <div class="md:w-2/3 lg:w-2/4">
+                <div class="py-10 mb-16" v-if="post">
+                    <p class="text-gray-500 font-semibold py-2">
+                        {{`${new Date(post.date).getDate()} ${months[new Date(post.date).getMonth()]} ${new Date(post.date).getFullYear()}`}}
+                    </p>
+                    <h1 class="text-4xl font-semibold py-2">
+                        <a :href="`/artikel/${post.slug}`">{{ post.title.rendered }}</a>
+                    </h1>
+                    <a :href="`/artikel/${post.slug}`">
+                        <img class="w-full rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
+                    </a>
+                    <div class="py-4" v-html="post.content.rendered.slice(0, 100)">
+                    </div>
+                    <a class="bg-black text-white px-4 py-1 text-sm rounded-full" :href="`/artikel/${post.slug}`">
+                        Lees artikel
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-black text-2xl font-semibold py-6 text-white text-center">
+            <i class="fa-brands fa-twitter mx-2"></i>
+            <i class="fa-brands fa-ethereum mx-2"></i>
+        </div>
+
+        <div v-if="posts.crypto" class="w-11/12 mx-auto my-12">
+            <div class="pb-20">
+                <div class="bg-neonYellow text-center py-2 rounded-md font-semibold">
+                    Crypto & Web3
+                </div>
+                <div class="w-52 mx-auto my-5 uppercase">
+                    <h2 class="font-bold text-4xl">
+                        BTC prijs
+                    </h2>
+                    <h2
+                    v-if="btcPrice"
+                    class="text-right font-bold text-4xl">
+                        € {{ btcPrice }}
+                    </h2>
+                </div>
+                <div class="my-8">
+                    <div v-for="post in posts.crypto.slice(0, 6)" class="w-full sm:w-2/3 md:w-1/3">
+                        <a :href="`/artikel/${post.slug}`">
+                            <img class="w-full h-full object-contain rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
+                        </a>
+                        <div class="my-2">
+                            <a :href="`/artikel/${post.slug}`">
+                                <h2 class="font-semibold">
+                                    {{ post.title.rendered }}
+                                </h2>
+                                <p class="text-gray-500">
+                                    {{`${new Date(post.date).getDate()} ${months[new Date(post.date).getMonth()]} ${new Date(post.date).getFullYear()}`}} • {{ getReadingTime(post.content.rendered) }} min leestijd
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="posts.ai" class="pb-20">
+                <div class="bg-neonYellow text-center py-2 rounded-md font-semibold">
+                    Artificial Intelligence
+                </div>
+                <div class="uppercase my-5 text-4xl font-bold w-64 mx-auto">
+                    <h2 class="text-right">Singularity</h2>
+                    <h2>Is coming</h2>
+                </div>
+                <div class="my-8">
+                    <div v-for="post in posts.ai.slice(0, 6)" class="w-full sm:w-2/3 md:w-1/3">
+                        <a :href="`/artikel/${post.slug}`">
+                            <img class="w-full h-full object-contain rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
+                        </a>
+                        <div class="my-2">
+                            <a :href="`/artikel/${post.slug}`">
+                                <h2 class="font-semibold">
+                                    {{ post.title.rendered }}
+                                </h2>
+                                <p class="text-gray-500">
+                                    {{`${new Date(post.date).getDate()} ${months[new Date(post.date).getMonth()]} ${new Date(post.date).getFullYear()}`}} • {{ getReadingTime(post.content.rendered) }} min leestijd
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div  v-if="posts.tech" class="pb-20">
+                <div class="bg-neonYellow text-center py-2 rounded-md font-semibold">
+                    Technologie
+                </div>
+                <div class="uppercase my-5 text-4xl font-bold w-32 mx-auto">
+                    <h2 class="text-right">ALGE</h2>
+                    <h2>MEEN</h2>
+                </div>
+                <div class="my-8">
+                    <div v-for="post in posts.tech.slice(0, 6)" class="w-full sm:w-2/3 md:w-1/3">
+                        <a :href="`/artikel/${post.slug}`">
+                            <img class="w-full h-full object-contain rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
+                        </a>
+                        <div class="my-2">
+                            <a :href="`/artikel/${post.slug}`">
+                                <h2 class="font-semibold">
+                                    {{ post.title.rendered }}
+                                </h2>
+                                <p class="text-gray-500">
+                                    {{`${new Date(post.date).getDate()} ${months[new Date(post.date).getMonth()]} ${new Date(post.date).getFullYear()}`}} • {{ getReadingTime(post.content.rendered) }} min leestijd
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Layout>
+</template>
+
+<script>
+import Layout from '@/layouts/Layout.vue';
+export default {
+    name: 'Home',
+    data() {
+        return {
+            post: null,
+            posts: {
+                crypto: null,
+                ai: null,
+                tech: null
+            },
+            btcPrice: null,
+            months: ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november', 'december']
+        }
+    },
+    mounted() {
+        this.getLatestPost();
+        this.getAllPosts();
+        this.getCurrentPrice();
+    },
+    methods: {
+        getAllPosts: function () {
+            fetch(`${import.meta.env.VITE_WP_ENDPOINT}/wp-json/wp/v2/posts?_embed`)
+            .then((res) => res.json())
+            .then((data) => {
+                const cryptoPosts = data.filter((p) => {
+                    if (p.categories[0] === 6) {
+                        return p;
+                    } 
+                });
+
+                const aiPosts = data.filter((p) => {
+                    if (p.categories[0] === 5) {
+                        return p;
+                    } 
+                });
+
+                const techPosts = data.filter((p) => {
+                    if (p.categories[0] === 7) {
+                        return p;
+                    } 
+                });
+
+                this.posts.crypto = cryptoPosts;
+                this.posts.ai = aiPosts;
+                this.posts.tech = techPosts;
+            })
+            .catch((err) => {
+                return;
+            })
+        },
+        getLatestPost: function () {
+            fetch(`${import.meta.env.VITE_WP_ENDPOINT}/wp-json/wp/v2/posts?_embed`)
+            .then((res) => res.json())
+            .then((data) => {
+                this.post = data[0];
+            })
+            .catch((err) => { 
+                return;
+            })
+        },
+        getCurrentPrice: function () {
+            fetch(`https://blockchain.info/ticker`, {
+                mode: 'cors'
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                this.btcPrice = data['EUR'].buy;
+            })
+        },
+        getReadingTime: function (content) {
+            const wpm = 225;
+            const words = content.trim().split(/\s+/).length;
+            return(Math.ceil(words / wpm));
+        }
+    },
+    components: {
+        Layout
+    }
+}
+</script>

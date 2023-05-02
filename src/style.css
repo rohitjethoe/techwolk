@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6 {
+    @apply font-semibold mt-8;
+}
+
+.post-content h1 {
+    @apply text-3xl;
+}
+
+.post-content h2 {
+    @apply text-2xl;
+}
+
+.post-content h3 {
+    @apply text-xl;
+}
+
+.post-content h4 {
+    @apply text-lg;
+}
+
+.post-content h5 {
+    @apply text-base;
+}
+
+.post-content h6 {
+    @apply text-sm;
+}
