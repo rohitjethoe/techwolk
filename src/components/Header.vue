@@ -8,13 +8,54 @@
                 </svg>
             </router-link>
         </div>
-        <div>
+        <div class="flex items-center gap-5">
             <div @click="opened = !opened" class="hover:cursor-pointer">
                 <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="9" cy="9" r="8.5" stroke="#282828"/>
                 <line x1="16.4069" y1="18.7094" x2="21.4069" y2="25.7094" stroke="#282828"/>
                 </svg>
             </div>
+            <div @click="navOpened = !navOpened" class="hover:cursor-pointer">
+                <div :class="navOpened ? 'rotate-45 translate-y-1' : ''" class="bg-black w-8 h-px transition-all"></div>
+                <div :class="navOpened ? '-rotate-45 -translate-y-1' : ''" class="bg-black w-8 h-px mt-2 transition-all"></div>
+            </div>
+        </div>
+        <div :class="navOpened ? 'block' : 'hidden'" class="absolute z-20 top-0 left-0 mt-[80px] w-screen bg-gray-100">
+            <ul class="w-11/12 mx-auto">
+                <li class="py-4">
+                    Home
+                </li>
+                <li class="py-4">
+                    <a href="/categorie/crypto">Crypto</a>
+                    <ul class="ml-4 my-4">
+                        <li class="my-4">
+                            <a href="/categorie/crypto">Artikelen</a>
+                        </li>
+                        <!-- <li class="my-4">
+                            Exchanges
+                        </li>
+                        <li class="my-4">
+                            Prijzen
+                        </li> -->
+                    </ul>
+                </li>
+                <li class="py-4">
+                    <a href="/categorie/ai">Artificial Intelligence</a>
+                    <ul class="ml-4 my-4">
+                        <li class="my-4">
+                            <a href="/categorie/ai">Artikelen</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="py-4">
+                    <a href="/categorie/tech">Technologie</a>
+                    <ul class="ml-4 my-4">
+                        <li class="my-4">
+                            <a href="/categorie/tech">Artikelen</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
         <div 
         :class="opened ? 'block' : 'hidden'"
@@ -39,6 +80,8 @@
                 </div>
             </div>
         </div>
+
+        
     </header>
 </template>
 
@@ -50,6 +93,7 @@ export default {
     data() {
         return {
             opened: false,
+            navOpened: false,
             query: '',
             results: null
         }

@@ -1,6 +1,6 @@
 <template>
     <Layout>
-        <div class="w-11/12 mx-auto">
+        <section class="w-11/12 mx-auto">
             <div class="md:w-2/3 lg:w-2/4">
                 <div class="py-10 mb-16" v-if="post">
                     <p class="text-gray-500 font-semibold py-2">
@@ -19,17 +19,17 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="bg-black text-2xl font-semibold py-6 text-white text-center">
+        <section class="bg-black text-2xl font-semibold py-6 text-white text-center">
             <a href="https://twitter.com/techwolk" target="_blank">
                 <i class="fa-brands fa-twitter mx-2"></i>
             </a>
             <i class="fa-brands fa-ethereum mx-2"></i>
-        </div>
+        </section>
 
-        <div v-if="posts.crypto" class="w-11/12 mx-auto my-12">
-            <div class="pb-20">
+        <section class="w-11/12 mx-auto my-12">
+            <div v-if="posts.crypto" class="pb-20">
                 <div class="bg-neonYellow text-center py-2 rounded-md font-semibold">
                     Crypto & Web3
                 </div>
@@ -89,7 +89,7 @@
                 </div>
             </div>
 
-            <div  v-if="posts.tech" class="pb-20">
+            <div v-if="posts.tech" class="pb-20">
                 <div class="bg-neonYellow text-center py-2 rounded-md font-semibold">
                     Technologie
                 </div>
@@ -115,7 +115,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </Layout>
 </template>
 
