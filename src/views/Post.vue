@@ -66,9 +66,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.post-content h4 {
-    @apply font-semibold;
-}
-</style>
