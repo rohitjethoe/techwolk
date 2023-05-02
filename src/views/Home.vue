@@ -30,16 +30,16 @@
 
         <section class="w-11/12 mx-auto my-12">
             <div v-if="posts.crypto" class="pb-20">
-                <div class="bg-neonYellow text-center py-2 rounded-md font-semibold">
+                <div class="bg-neonYellow text-4xl h-6 p-2 mb-12 rounded-md font-base">
                     Crypto & Web3
                 </div>
-                <div class="w-52 mx-auto my-5 uppercase">
-                    <h2 class="font-bold text-4xl">
+                <div class="w-52 text-3xl my-5 uppercase">
+                    <h2 class="font-bold">
                         BTC prijs
                     </h2>
                     <h2
                     v-if="btcPrice"
-                    class="text-right font-bold text-4xl">
+                    class="text-right font-bold">
                         € {{ btcPrice }}
                     </h2>
                 </div>
@@ -63,19 +63,21 @@
             </div>
 
             <div v-if="posts.ai" class="pb-20">
-                <div class="bg-neonYellow text-center py-2 rounded-md font-semibold">
+                <div class="bg-neonYellow text-4xl h-6 p-2 mb-12 rounded-md font-base">
                     Artificial Intelligence
                 </div>
-                <div class="uppercase my-5 text-4xl font-bold w-64 mx-auto">
+                <div class="uppercase my-5 text-3xl font-bold w-64">
                     <h2 class="text-right">Singularity</h2>
                     <h2>Is coming</h2>
                 </div>
                 <div class="my-8">
-                    <div v-for="post in posts.ai.slice(0, 6)" class="w-full sm:w-2/3 md:w-1/3">
-                        <a :href="`/artikel/${post.slug}`">
-                            <img class="w-full h-full object-contain rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
-                        </a>
-                        <div class="my-2">
+                    <div v-for="post in posts.ai.slice(0, 6)" class="flex items-center gap-3">
+                        <div class="w-32 h-24">
+                            <a :href="`/artikel/${post.slug}`">
+                                <img class="w-full h-full rounded object-cover aspect-auto rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
+                            </a>
+                        </div>
+                        <div class="my-2 w-2/3 sm:w-96">
                             <a :href="`/artikel/${post.slug}`">
                                 <h2 class="font-semibold">
                                     {{ post.title.rendered }}
@@ -90,19 +92,18 @@
             </div>
 
             <div v-if="posts.tech" class="pb-20">
-                <div class="bg-neonYellow text-center py-2 rounded-md font-semibold">
+                <div class="bg-neonYellow text-4xl h-6 p-2 mb-12 rounded-md font-base">
                     Technologie
                 </div>
-                <div class="uppercase my-5 text-4xl font-bold w-32 mx-auto">
-                    <h2 class="text-right">ALGE</h2>
-                    <h2>MEEN</h2>
+                <div class="uppercase my-5 text-3xl font-bold ">
+                    <h2>ALGEMEEN TECH NIEUWS</h2>
                 </div>
                 <div class="my-8">
-                    <div v-for="post in posts.tech.slice(0, 6)" class="w-full sm:w-2/3 md:w-1/3">
+                    <div v-for="post in posts.tech.slice(0, 6)" class="flex items-center gap-3">
                         <a :href="`/artikel/${post.slug}`">
-                            <img class="w-full h-full object-contain rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
+                            <img class="w-32 h-24 object-cover aspect-auto rounded" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
                         </a>
-                        <div class="my-2">
+                        <div class="my-2 w-2/3 sm:w-96">
                             <a :href="`/artikel/${post.slug}`">
                                 <h2 class="font-semibold">
                                     {{ post.title.rendered }}
