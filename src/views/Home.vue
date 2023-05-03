@@ -70,11 +70,6 @@
                     <a :href="`/artikel/${post.slug}`">
                         <img class="w-full h-96 object-cover aspect-video my-4 rounded mx-auto" :src="post._embedded['wp:featuredmedia'][0]['source_url']" alt="">
                     </a>
-                    <div class="py-4" v-html="post.content.rendered.slice(0, 100)">
-                    </div>
-                    <a class="bg-black text-white px-4 py-1 text-sm rounded-full" :href="`/artikel/${post.slug}`">
-                        Lees artikel
-                    </a>
                 </div>
             </div>
         </section>
