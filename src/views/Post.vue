@@ -53,7 +53,8 @@ export default {
             .then(res => res.json())
             .then((data) => {
                 this.post = data[0];
-                document.title = `${data[0].title.rendered} | Techwolk.nl`
+                document.title = `${data[0].title.rendered} | Techwolk.nl`;
+                document.querySelectorAll('meta[property=og\\:image]')[0].setAttribute('content', data[0]._embedded['wp:featuredmedia'][0]['source_url']);
             })
             .catch((err) => {
                 this.post = null;
